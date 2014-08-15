@@ -1,0 +1,31 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Up", '#', id: "logo" %>
+			<% if signed_in? %>
+      <nav>
+        <ul class="nav pull-right">
+					<% if params[:writing] %>
+					  <li><%= link_to "Cancel", mails_path %></li>
+					<% else %>
+					  <li><%= link_to "Write a mail", controller:'mails',
+							                              action:'new', 
+																						writing:true %></li>
+				 <% end %>
+	          <li id="fat-menu" class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		        Others <b class="caret"></b>
+	        	</a>
+		        <ul class="dropdown-menu">
+		          <li><%= link_to "Facebook", 'https://www.facebook.com/',target:'_blank' %></li>
+							<li><%= link_to "Profile", '#' %></li>
+							<li class="divider"></li>
+						  <li><%= link_to "Sign out", signout_path, method:'delete' %></li>
+		        </ul>
+	        </li>				  
+        </ul>
+      </nav>
+			<% end %>
+    </div>
+  </div>
+</header>

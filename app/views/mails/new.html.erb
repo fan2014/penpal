@@ -1,0 +1,48 @@
+<% provide(:title, 'New Mail')%>
+<div class="row">	
+  <aside class="span2 noUnderline"> 
+	  <section>
+		  <table class="table table-hover">
+			  <thead><tr><th>Inbox</th></tr></thead>
+				<tbody>
+					<% @mails.each do |mail|%>
+					<% if mail.user.id==2%>
+					<% gender = "boy"%>
+					<% else %>
+					<% gender = "girl"%>
+					<% end %>
+					
+				  <tr><td><%= link_to mail.subject,
+						{controller:'mails',
+						action:'read_again',
+					  id:mail.id},
+						target:'_blank',
+						class:gender
+					   %></td></tr>
+					<% end %>
+			  </tbody>
+		  </table>
+	  </section>
+  </aside>
+	
+	<div class="span10">
+		<div class="center hero-unit">
+			<h2>Writing a mail</h2>
+				<%= form_for(@new_mail) do |f| %>
+
+				<%= f.hidden_field :commenting, value:true %>	
+		
+				<%= f.label :subject %>
+				<%= f.text_field :subject %>
+
+				<%= f.label :content %>
+				<%= f.text_area :content , rows:15, class:"field span8" %> 
+				<div>
+				<%= f.submit "Send", class: "btn btn-large btn-danger" %>
+			  </div>
+				<% end %>
+		</div>
+	</div>
+
+</div>
+

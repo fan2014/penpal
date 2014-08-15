@@ -1,6 +1,13 @@
 Penpal::Application.routes.draw do
+  get "sessions/new"
+  get "mails/read_again"
+  resources :mails
   resources :users
-  root to: 'home#home'
+  resources :sessions, only: [:new,:create,:destroy]
+  root 'sessions#new'
+  match '/signin', to: 'sessions#new',      via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

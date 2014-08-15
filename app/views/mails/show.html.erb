@@ -1,0 +1,44 @@
+<div class="row">	
+  <aside class="span2 noUnderline"> 
+	  <section>
+		  <table class="table table-hover">
+			  <thead><tr><th>Inbox</th></tr></thead>
+				<tbody>
+					<% @mails.each do |mail|%>
+					<% if mail.user.id==2%>
+					<% gender = "boy"%>
+					<% else %>
+					<% gender = "girl"%>
+					<% end %>
+				  <tr><td><%= link_to mail.subject, 
+						mail_path(mail),
+						id:mail.id,
+						class:gender %></td></tr>
+					<% end %>
+			  </tbody>
+		  </table>
+	  </section>
+  </aside>
+	
+	<div class="span10">
+		<div class="panel panel-warning">
+		  <div class="panel-heading">
+			<h3 class="panel-title"><%= @mail.subject %></h3>
+		  </div>
+		  <div class="panel-body">
+			<pre>
+			<%= simple_format(@mail.content) %>
+		  </pre>
+		  </div>
+		  <div class="panel-footer">
+		    Sent <%= time_ago_in_words(@mail.created_at) %> ago by
+		         <%= @mail.user.name %>
+		  </div>
+		</div>
+	</div>
+
+</div>
+
+
+
+

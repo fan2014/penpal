@@ -1,4 +1,4 @@
-<% provide(:title, 'New Mail')%>
+<% provide(:title, 'Up | New Mail')%>
 <div class="row">	
   <aside class="span2 noUnderline"> 
 	  <section>
@@ -15,7 +15,8 @@
 				  <tr><td><%= link_to mail.subject,
 						{controller:'mails',
 						action:'read_again',
-					  id:mail.id},
+					  id:mail.id,
+					  read_again:true},
 						target:'_blank',
 						class:gender
 					   %></td></tr>

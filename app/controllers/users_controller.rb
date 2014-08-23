@@ -26,4 +26,12 @@ class UsersController < ApplicationController
       render 'sessions/new'
     end
   end
+  
+  def download
+    if signed_in?
+      send_file 'app/assets/paper.pdf'
+    else
+      render 'sessions/new'
+    end
+  end
 end

@@ -1,6 +1,7 @@
 Penpal::Application.routes.draw do
   get "sessions/new"
   get "mails/read_again"
+  get "users/download"
   resources :mails
   resources :users
   resources :sessions, only: [:new,:create,:destroy]
